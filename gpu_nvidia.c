@@ -19,23 +19,12 @@ int nvidia_gpu_init(Display * dpy, int screen) {
         return 0;
     }
 
-//    ret = XNVCTRLQueryVersion(dpy, &major, &minor);
-//    if (ret != True) {
-//        fprintf(stderr, "The NV-CONTROL X extension does not exist on '%s'.\n",
-//                XDisplayName(NULL));
-//        return 1;
-//    }
-//    printf("NV-CONTROL X extension present\n");
-//    printf("  version        : %d.%d\n", major, minor);
-//    printf("  event base     : %d\n", event_base);
-//    printf("  error base     : %d\n", error_base);
-
 	if(!XNVCTRLIsNvScreen(dpy, screen)) {
 		fprintf(stderr, "Screen %d does not support the NV-Control extension\n", screen);
 		return 0;
 	}
 
-	int max;	
+	int max;
 	ret = XNVCTRLQueryAttribute(dpy, screen, 0, NV_CTRL_GPU_CORE_THRESHOLD, &max);
 	if(ret) {
 		nvidia_gpu_max_temperature = max;
