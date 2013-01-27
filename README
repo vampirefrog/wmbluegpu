@@ -3,4 +3,4 @@ WMBlueGPU
 
 It monitors your GPU's temperature. So far it only works on linux+nvidia proprietary drivers.
 
-I'll add ATI support soon.
+There is basic AMD/ATI support, by using the command line utility aticonfig.
