@@ -28,7 +28,7 @@ INST=install
 
 all: $(PROG)
 
-$(PROG): $(OBJS)
+$(PROG): $(OBJS) libXNVCtrl/libXNVCtrl.a
 	$(CC) -o $(PROG) $(OBJS) $(LIBS)
 	strip $(PROG)
 %.o: %.c
@@ -41,3 +41,6 @@ install: $(PROG) $(MANUAL)
 uninstall:
 	$(RM) $(BINDIR)/$(PROG)
 	$(RM) $(MANDIR)/$(MANUAL)
+libXNVCtrl/libXNVCtrl.a:
+	cd libXNVCtrl && $(MAKE)
+
