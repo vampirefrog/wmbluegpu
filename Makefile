@@ -6,7 +6,7 @@ PREFIX=/usr/local
 # Use Xft for the menu
 USE_XFT=yes
 
-VERSION=0.2
+VERSION=0.3
 
 BINDIR=$(PREFIX)/bin
 MANPREFIX=$(PREFIX)/share/man
@@ -35,6 +35,7 @@ $(PROG): $(OBJS) libXNVCtrl/libXNVCtrl.a
 	$(CC) $(CFLAGS) -c $< -o $@
 clean:
 	$(RM) *.o $(PROG) *~ *.bak *.BAK .xvpics
+	cd libXNVCtrl && $(MAKE) clean
 install: $(PROG) $(MANUAL)
 	$(INST) -m 755 $(PROG) $(BINDIR)
 	$(INST) -m 644 $(MANUAL) $(MANDIR)
